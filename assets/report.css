@@ -1,0 +1,107 @@
+/* Default stylesheet for md2pdf-local. Tuned for Chinese technical reports:
+   readable CJK line height, wide GFM tables that wrap instead of overflowing. */
+
+:root {
+  --md2pdf-font-size: 10.5pt;
+  --md2pdf-ink: #1f2328;
+  --md2pdf-heading: #111827;
+  --md2pdf-accent: #2563eb;
+  --md2pdf-border: #d0d7de;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", "Hiragino Sans GB",
+    "Source Han Sans SC", "Noto Sans CJK SC", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--md2pdf-font-size);
+  line-height: 1.75;
+  color: var(--md2pdf-ink);
+  -webkit-font-smoothing: antialiased;
+  word-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--md2pdf-heading);
+  margin: 1.15em 0 0.55em;
+  break-after: avoid-page;
+}
+
+h1 { font-size: 1.8em; margin-top: 0; padding-bottom: 0.3em; border-bottom: 2px solid var(--md2pdf-accent); }
+h2 { font-size: 1.33em; padding-left: 0.5em; border-left: 4px solid var(--md2pdf-accent); }
+h3 { font-size: 1.14em; }
+h4, h5, h6 { font-size: 1.05em; }
+
+p { margin: 0.55em 0; }
+a { color: var(--md2pdf-accent); text-decoration: none; }
+strong { font-weight: 600; color: var(--md2pdf-heading); }
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.5em 0; }
+
+ul, ol { padding-left: 1.7em; margin: 0.5em 0; }
+li { margin: 0.22em 0; }
+li > input[type="checkbox"] { margin-right: 0.4em; }
+
+blockquote {
+  margin: 0.8em 0;
+  padding: 0.5em 1em;
+  color: #4b5563;
+  background: #f9fafb;
+  border-left: 3px solid #d1d5db;
+  break-inside: avoid;
+}
+
+code {
+  font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+  font-size: 0.9em;
+  background: #f3f4f6;
+  padding: 0.1em 0.32em;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+
+pre {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.75em 1em;
+  margin: 0.8em 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  break-inside: avoid;
+}
+
+pre code { background: none; padding: 0; font-size: 0.86em; line-height: 1.6; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.9em 0;
+  font-size: 0.92em;
+}
+
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+
+th, td {
+  border: 1px solid var(--md2pdf-border);
+  padding: 0.42em 0.58em;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+th { background: #f3f6fa; font-weight: 600; }
+tbody tr:nth-child(even) { background: #fafbfc; }
+
+img { max-width: 100%; height: auto; }
+
+.page-break { break-after: page; height: 0; margin: 0; padding: 0; }
+
+@media print {
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
